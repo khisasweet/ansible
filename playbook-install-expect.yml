@@ -1,0 +1,19 @@
+- hosts: kubespray
+  gather_facts: False
+  tasks:
+  - name: Copy rpm file to server
+    copy:
+        src: /opt/telemetry.tar
+        dest: /opt/
+  - name: extract tar file
+    unarchive:
+        src: /opt/telemetry.tar
+        dest: /opt
+  - name: Install package tcl-8.5.13-8.el7.x86_64.rpm
+    yum: 
+        name: /opt/telemetry/tcl-8.5.13-8.el7.x86_64.rpm
+        state: present
+  - name: Install package tcllib-1.14-1.el7.noarch.rpm
+    yum: 
+        name: /opt/telemetry/tcllib-1.14-1.el7.noarch.rpm
+        state: present
