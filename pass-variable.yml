@@ -1,0 +1,8 @@
+---
+- hosts: all
+  vars:
+    IP: ""
+  tasks:
+  - name: Print passed value
+    debug:
+      msg: "The passed value for IP is {{ IP }}"
