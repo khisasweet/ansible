@@ -1,0 +1,10 @@
+
+---
+- hosts: all
+  vars:
+     ipAddress: 192.168.100.50
+  tasks:
+  - name: Apply Page Template
+    template:
+      src: template_file.j2
+      dest: generated-file
