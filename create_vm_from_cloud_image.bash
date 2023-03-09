@@ -2,6 +2,8 @@
 
 export LIBGUESTFS_BACKEND=direct
 
+cd ansible-practise
+git pull
 
 virt-customize \
 -a rocky9.qcow2 \
