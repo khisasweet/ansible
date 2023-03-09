@@ -1,0 +1,25 @@
+---
+- name: Install Chrony
+  package:
+    name: chrony
+    state: present
+
+- name: Enable Chrony service
+  service:
+    name: chronyd
+    state: started
+    enabled: yes
+
+- name: Configure Chrony
+  copy:
+    src: files/chrony.conf
+    dest: /etc/chrony.conf
+  notify: restart chrony
+
+- name: Allow NTP traffic in firewall
+  firewalld:
+    service: ntp
+    permanent: yes
+    state: enabled
+    immediate: yes
+
